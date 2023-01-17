@@ -1,0 +1,15 @@
+F:\CS30\Projects\Complete Projects\Black-Jack\bin\Debug\net6.0\Black Jack.exe
+F:\CS30\Projects\Complete Projects\Black-Jack\bin\Debug\net6.0\Black Jack.deps.json
+F:\CS30\Projects\Complete Projects\Black-Jack\bin\Debug\net6.0\Black Jack.runtimeconfig.json
+F:\CS30\Projects\Complete Projects\Black-Jack\bin\Debug\net6.0\Black Jack.dll
+F:\CS30\Projects\Complete Projects\Black-Jack\bin\Debug\net6.0\Black Jack.pdb
+F:\CS30\Projects\Complete Projects\Black-Jack\obj\Debug\net6.0\Black Jack.csproj.AssemblyReference.cache
+F:\CS30\Projects\Complete Projects\Black-Jack\obj\Debug\net6.0\Black Jack.GeneratedMSBuildEditorConfig.editorconfig
+F:\CS30\Projects\Complete Projects\Black-Jack\obj\Debug\net6.0\Black Jack.AssemblyInfoInputs.cache
+F:\CS30\Projects\Complete Projects\Black-Jack\obj\Debug\net6.0\Black Jack.AssemblyInfo.cs
+F:\CS30\Projects\Complete Projects\Black-Jack\obj\Debug\net6.0\Black Jack.csproj.CoreCompileInputs.cache
+F:\CS30\Projects\Complete Projects\Black-Jack\obj\Debug\net6.0\Black Jack.dll
+F:\CS30\Projects\Complete Projects\Black-Jack\obj\Debug\net6.0\refint\Black Jack.dll
+F:\CS30\Projects\Complete Projects\Black-Jack\obj\Debug\net6.0\Black Jack.pdb
+F:\CS30\Projects\Complete Projects\Black-Jack\obj\Debug\net6.0\Black Jack.genruntimeconfig.cache
+F:\CS30\Projects\Complete Projects\Black-Jack\obj\Debug\net6.0\ref\Black Jack.dll
