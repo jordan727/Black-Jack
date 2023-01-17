@@ -55,7 +55,6 @@ while (gameLoop)
                 } 
             }
 
-
             if (dealerHandTotal < 17)
             {
                 addRandomCard(newDeck, dealerHand);
@@ -173,7 +172,7 @@ static void addRandomCard(List<Cards> deck, List<Cards> hand)
     }
     else
     {
-    hand.Add(deck[i]);
+        hand.Add(deck[i]);
     }
     deck.RemoveAt(i);
 }
