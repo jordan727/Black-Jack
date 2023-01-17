@@ -1,58 +1,7 @@
 ﻿// Black Jack by Jordan. A
+using System.Text.Json;
 #nullable disable
-List<Cards> fullDeck = new List<Cards>{};
-fullDeck.Add(new Cards("♠", "A", 11));
-fullDeck.Add(new Cards("♠", "2", 2));
-fullDeck.Add(new Cards("♠", "3", 3));
-fullDeck.Add(new Cards("♠", "4", 4));
-fullDeck.Add(new Cards("♠", "5", 5));
-fullDeck.Add(new Cards("♠", "6", 6));
-fullDeck.Add(new Cards("♠", "7", 7));
-fullDeck.Add(new Cards("♠", "8", 8));
-fullDeck.Add(new Cards("♠", "9", 9));
-fullDeck.Add(new Cards("♠", "10", 10));
-fullDeck.Add(new Cards("♠", "J", 10));
-fullDeck.Add(new Cards("♠", "Q", 10));
-fullDeck.Add(new Cards("♠", "K", 10));
-fullDeck.Add(new Cards("♥", "A", 11));
-fullDeck.Add(new Cards("♥", "2", 2));
-fullDeck.Add(new Cards("♥", "3", 3));
-fullDeck.Add(new Cards("♥", "4", 4));
-fullDeck.Add(new Cards("♥", "5", 5));
-fullDeck.Add(new Cards("♥", "6", 6));
-fullDeck.Add(new Cards("♥", "7", 7));
-fullDeck.Add(new Cards("♥", "8", 8));
-fullDeck.Add(new Cards("♥", "9", 9));
-fullDeck.Add(new Cards("♥", "10", 10));
-fullDeck.Add(new Cards("♥", "J", 10));
-fullDeck.Add(new Cards("♥", "Q", 10));
-fullDeck.Add(new Cards("♥", "K", 10));
-fullDeck.Add(new Cards("♦", "A", 11));
-fullDeck.Add(new Cards("♦", "2", 2));
-fullDeck.Add(new Cards("♦", "3", 3));
-fullDeck.Add(new Cards("♦", "4", 4));
-fullDeck.Add(new Cards("♦", "5", 5));
-fullDeck.Add(new Cards("♦", "6", 6));
-fullDeck.Add(new Cards("♦", "7", 7));
-fullDeck.Add(new Cards("♦", "8", 8));
-fullDeck.Add(new Cards("♦", "9", 9));
-fullDeck.Add(new Cards("♦", "10", 10));
-fullDeck.Add(new Cards("♦", "J", 10));
-fullDeck.Add(new Cards("♦", "Q", 10));
-fullDeck.Add(new Cards("♦", "K", 10));
-fullDeck.Add(new Cards("♣", "A", 11));
-fullDeck.Add(new Cards("♣", "2", 2));
-fullDeck.Add(new Cards("♣", "3", 3));
-fullDeck.Add(new Cards("♣", "4", 4));
-fullDeck.Add(new Cards("♣", "5", 5));
-fullDeck.Add(new Cards("♣", "6", 6));
-fullDeck.Add(new Cards("♣", "7", 7));
-fullDeck.Add(new Cards("♣", "8", 8));
-fullDeck.Add(new Cards("♣", "9", 9));
-fullDeck.Add(new Cards("♣", "10", 10));
-fullDeck.Add(new Cards("♣", "J", 10));
-fullDeck.Add(new Cards("♣", "Q", 10));
-fullDeck.Add(new Cards("♣", "K", 10));
+string cardsData = File.ReadAllText("card-data.json");
 
 
 bool gameLoop = true;
@@ -66,7 +15,7 @@ while (gameLoop)
     {
         // Initialize Cards
         Console.Clear();
-        List<Cards> newDeck = new List<Cards>(fullDeck);
+        List<Cards> newDeck = JsonSerializer.Deserialize<List<Cards>>(cardsData);
         List<Cards> dealerHand = new List<Cards>{};
         List<Cards> playerHand = new List<Cards>{};
 
@@ -82,6 +31,7 @@ while (gameLoop)
         int playerHandTotal = playerHand.Sum(Cards => Cards.Value);
         
         bool stand = false;
+
         while (dealerHandTotal < 21 && playerHandTotal < 21)
         {
             if (stand == false)
@@ -118,6 +68,7 @@ while (gameLoop)
             dealerHandTotal = dealerHand.Sum(Cards => Cards.Value);
             playerHandTotal = playerHand.Sum(Cards => Cards.Value);
         }
+
         updateAndLogCardInfo(dealerHand, playerHand, true);
         if (dealerHandTotal == 21 && playerHandTotal != 21) 
         {
@@ -170,12 +121,12 @@ static void updateAndLogCardInfo(List<Cards> DH, List<Cards> PH, bool gameComple
         {
             for (int n = 0; n < DH.Count; n++)
             {
-                dealerInfo += $"|{DH[n].getCardInfo()}|";
+                dealerInfo += $"|{DH[n].ToString()}|";
             }
         } 
         else
         {
-            dealerInfo += $"|{DH[0].getCardInfo()}|";
+            dealerInfo += $"|{DH[0].ToString()}|";
             for (int n = 0; n < DH.Count - 1; n++)
             {
                 dealerInfo += "|?|";
@@ -186,7 +137,7 @@ static void updateAndLogCardInfo(List<Cards> DH, List<Cards> PH, bool gameComple
 
     for (int n = 0; n < PH.Count; n++)
     {
-        playerInfo += $"|{PH[n].getCardInfo()}|";
+        playerInfo += $"|{PH[n].ToString()}|";
     }
 
     // Log to console
@@ -229,19 +180,19 @@ static void addRandomCard(List<Cards> deck, List<Cards> hand)
 
 public class Cards
 {
-    public string Type { get; }
-    public string Symbol { get; }
-    public int Value { get; }
-
-    public string getCardInfo() 
-    {
-        return $"{Type} {Symbol}";
-    }
+    // Properties
+    public string Type { get; set; }
+    public string Symbol { get; set; }
+    public int Value { get; set; }
 
     public Cards(string type, string symbol, int value)
     {
         this.Type = type;
         this.Symbol = symbol;
         this.Value = value;
+    }
+    public override string ToString()
+    {
+        return $"{Type} {Symbol}";
     }
 }
